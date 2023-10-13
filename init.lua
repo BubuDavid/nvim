@@ -110,7 +110,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -237,7 +237,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -280,6 +280,9 @@ vim.o.guicursor = true
 -- Scroll off (rows previous and after the current line)
 vim.o.scrolloff = 8
 
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -293,34 +296,34 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- [[ My Maps ]]
 
 -- Access command mode easily
-vim.keymap.set("n", "<leader><space>", ":")
+vim.keymap.set('n', '<leader><space>', ':')
 
 -- Access the explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Escape from insert
-vim.keymap.set("i", "jk", "<ESC>")
-vim.keymap.set("i", "jj", "<ESC>")
+vim.keymap.set('i', 'jk', '<ESC>')
+vim.keymap.set('i', 'jj', '<ESC>')
 
 -- Move while highlighting
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- Deleting something without copying it
-vim.keymap.set("x", "<leader>d", "\"_dP")
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+vim.keymap.set('x', '<leader>d', '"_dP')
+vim.keymap.set('n', '<leader>d', '"_d')
+vim.keymap.set('v', '<leader>d', '"_d')
 
 -- Navigate between tabs
-vim.keymap.set("n", "<c-l>", vim.cmd.tabn)
-vim.keymap.set("n", "<c-h>", vim.cmd.tabp)
-vim.keymap.set("i", "<c-l>", vim.cmd.tabn)
-vim.keymap.set("i", "<c-h>", vim.cmd.tabp)
+vim.keymap.set('n', '<c-l>', vim.cmd.tabn)
+vim.keymap.set('n', '<c-h>', vim.cmd.tabp)
+vim.keymap.set('i', '<c-l>', vim.cmd.tabn)
+vim.keymap.set('i', '<c-h>', vim.cmd.tabp)
 
 -- Copying things from nvim to computer
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>Y', '"+Y')
+vim.keymap.set('v', '<leader>y', '"+y')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -374,8 +377,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim',
-      'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
