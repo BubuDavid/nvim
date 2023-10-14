@@ -298,7 +298,7 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- [[ My Maps ]]
 
 -- Access command mode easily
-vim.keymap.set("n", "<leader><space>", ":")
+vim.keymap.set({ "n", "v" }, "<leader><space>", ":")
 
 -- Access the explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -326,6 +326,11 @@ vim.keymap.set("i", "<c-h>", vim.cmd.tabp)
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 vim.keymap.set("v", "<leader>y", '"+y')
+
+-- Selection actions to auto cgn word under cursor
+vim.keymap.set("n", "cgn", "*Ncgn")
+-- If I forgot to do the last command (and do something like ciw), this command cgn from the last modified word
+vim.api.nvim_set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], { noremap = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
