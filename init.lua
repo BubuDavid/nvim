@@ -173,22 +173,6 @@ require("lazy").setup({
   },
 
   {
-    -- Set lualine as statusline
-    "nvim-lualine/lualine.nvim",
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = "material",
-        -- component_separators = '|',
-        component_separators = { left = "", right = "" },
-        -- section_separators = '',
-        section_separators = { left = "", right = "" },
-      },
-    },
-  },
-
-  {
     -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
     -- Enable `lukas-reineke/indent-blankline.nvim`
@@ -243,7 +227,19 @@ require("lazy").setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = "custom.plugins" },
-}, {})
+}, {
+  -- Extra configurations for lazy.nvim
+  install = {
+    colorscheme = { "nightfly" }, -- Color Scheme for install window
+  },
+  checker = { -- Remove anoying signal when a change is made in some configurations
+    enabled = true,
+    notify = false,
+  },
+  change_detection = { -- The same as above
+    notify = false,
+  },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
