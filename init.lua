@@ -108,6 +108,9 @@ require("lazy").setup({
 
       -- Adds a number of user-friendly snippets
       "rafamadriz/friendly-snippets",
+
+      -- For path completion
+      "hrsh7th/cmp-path",
     },
   },
 
@@ -518,7 +521,15 @@ require("which-key").register {
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require("mason").setup()
+require("mason").setup {
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+}
 require("mason-lspconfig").setup()
 
 -- Enable the following language servers
@@ -615,6 +626,7 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "path" },
   },
 }
 
