@@ -152,12 +152,20 @@ require("lazy").setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   "navarasu/onedark.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme "onedark"
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    "navarasu/onedark.nvim",
+    -- Theme from Josean Martinez
+    "bluz71/vim-nightfly-guicolors",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "onedark"
+      vim.cmd.colorscheme "nightfly"
     end,
   },
 
