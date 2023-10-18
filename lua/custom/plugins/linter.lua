@@ -12,8 +12,8 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
-      c = { "cpplint" },
-      cpp = { "cpplint" },
+      c = { "cpplint" }, -- To configure filewise options create CPPLINT.cfg file
+      cpp = { "cpplint" }, -- To configure filewise options create CPPLINT.cfg file
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

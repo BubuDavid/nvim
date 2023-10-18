@@ -111,6 +111,9 @@ require("lazy").setup({
 
       -- For path completion
       "hrsh7th/cmp-path",
+
+      -- For cute icons in completion
+      "onsails/lspkind.nvim", -- vs-code like pictograms
     },
   },
 
@@ -583,6 +586,7 @@ local cmp = require "cmp"
 local luasnip = require "luasnip"
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
+local lspkind = require "lspkind"
 
 cmp.setup {
   snippet = {
@@ -623,6 +627,12 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
+  },
+  formatting = {
+    format = lspkind.cmp_format {
+      maxwidth = 50,
+      ellipsis_char = "...",
+    },
   },
 }
 
