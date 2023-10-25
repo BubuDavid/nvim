@@ -6,7 +6,7 @@ return {
     local bufferline = require "bufferline"
     bufferline.setup {
       options = {
-        mode = "tabs",
+        mode = "buffers",
         indicator = {
           icon = "▎", -- this should be omitted if indicator style is not 'icon'
           style = "icon",

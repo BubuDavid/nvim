@@ -43,8 +43,6 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require "custom.functions"
-
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -118,7 +116,7 @@ require("lazy").setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim",  opts = {} },
+  { "folke/which-key.nvim", opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
@@ -235,7 +233,7 @@ require("lazy").setup({
   install = {
     colorscheme = { "nightfly" }, -- Color Scheme for install window
   },
-  checker = {                     -- Remove anoying signal when a change is made in some configurations
+  checker = { -- Remove anoying signal when a change is made in some configurations
     enabled = true,
     notify = false,
   },
@@ -259,7 +257,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+-- vim.o.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -317,7 +315,7 @@ vim.keymap.set({ "n", "v" }, "<leader><space>", ":")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Escape from insert
-vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
+vim.keymap.set("i", "jk", "<ESC>")
 
 -- Move while highlighting
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -328,11 +326,9 @@ vim.keymap.set("x", "<leader>d", '"_dP')
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
--- Navigate between tabs
-vim.keymap.set("n", "<c-l>", vim.cmd.tabn)
-vim.keymap.set("n", "<c-h>", vim.cmd.tabp)
-vim.keymap.set("i", "<c-l>", vim.cmd.tabn)
-vim.keymap.set("i", "<c-h>", vim.cmd.tabp)
+-- Navigate between buffers
+vim.keymap.set({ "n", "i" }, "<c-l>", vim.cmd.bn)
+vim.keymap.set({ "n", "i" }, "<c-h>", vim.cmd.bp)
 
 -- Copying things from nvim to computer
 vim.keymap.set("n", "<leader>y", '"+y')
@@ -373,7 +369,7 @@ pcall(require("telescope").load_extension, "fzf")
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>of", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-vim.keymap.set("n", "<leader>b", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader>ab", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
@@ -396,8 +392,7 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 vim.defer_fn(function()
   require("nvim-treesitter.configs").setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "javascript", "typescript", "vimdoc", "vim",
-      "bash" },
+    ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "javascript", "typescript", "vimdoc", "vim", "bash" },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
