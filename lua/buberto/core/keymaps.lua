@@ -33,10 +33,13 @@ set_keymap("v", "<leader>y", '"+y', "Copy things from nvim to computer")
 set_keymap({ "n", "i" }, "<C-l>", vim.cmd.bn, "Go to next buffer")
 set_keymap({ "n", "i" }, "<C-h>", vim.cmd.bp, "Go to previous buffer")
 
+-- Delete buffer
+set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
+
 -- Selection actions to auto cgn word under cursor
 set_keymap("n", "cgn", "*Ncgn")
 -- If I forgot to do the last command (and do something like ciw), this command cgn from the last modified word
 set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], "cgn but if you forget the cgn", true)
 
 -- Fun replace of under the cursor word globally
-set_keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
+set_keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]], "Replace under the cursor word automatically")
