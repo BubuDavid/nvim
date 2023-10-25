@@ -20,7 +20,7 @@ set_keymap("v", "J", ":m '>+1<CR>gv=gv", "Move Down the selected text")
 set_keymap("v", "K", ":m '<-2<CR>gv=gv", "Move Up the selected text")
 
 -- Deleting something without copying it
-set_keymap("x", "<leader>d", '"_dP', "Delete something without copying it")
+set_keymap("x", "<leader>p", '\"_dP', "Delete something without copying it")
 set_keymap("n", "<leader>d", '"_d', "Delete something without copying it")
 set_keymap("v", "<leader>d", '"_d', "Delete something without copying it")
 
@@ -37,3 +37,6 @@ set_keymap({ "n", "i" }, "<C-h>", vim.cmd.bp, "Go to previous buffer")
 set_keymap("n", "cgn", "*Ncgn")
 -- If I forgot to do the last command (and do something like ciw), this command cgn from the last modified word
 set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], "cgn but if you forget the cgn", true)
+
+-- Fun replace of under the cursor word globally
+set_keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])

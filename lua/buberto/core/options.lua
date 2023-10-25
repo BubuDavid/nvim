@@ -13,6 +13,9 @@ opt.autoindent = true -- Copy indent from current line when starting a new one
 -- Bye bye highlight on search
 opt.hlsearch = false
 
+-- Like incremental search
+opt.incsearch = true
+
 -- Save undo history
 opt.undofile = true
 
@@ -36,5 +39,14 @@ opt.cursorline = true
 o.guicursor = true
 
 -- Highlight on yank
-vim.highlight.on_yank()
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
 
+-- Remove Mouse interactions with Vim
+opt.mouse = ""
