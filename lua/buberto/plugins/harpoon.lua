@@ -4,10 +4,9 @@ return {
 		"nvim-lua/plenary.nvim"
 	},
 	config = function()
-		local mark = require("harpoon.mark")
 		local ui = require("harpoon.ui")
-		
-		vim.keymap.set("n", "<leader>ma", function() 
+
+		vim.keymap.set("n", "<leader>ma", function()
 			require("harpoon.mark").add_file()
 			print("Mark added 🔥")
 		end, { desc = "Add a mark in that file" })
