@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-function set_keymap(mode, input, action, desc, noremap)
+local set_keymap = function (mode, input, action, desc, noremap)
 	if (noremap) then
 		vim.keymap.set(mode, input, action, { desc = desc, noremap = noremap })
 	else
