@@ -17,7 +17,7 @@ return {
         left_trunc_marker = "",
         right_trunc_marker = "",
         diagnostics = "nvim_lsp",
-        separator_style = "slant",
+        separator_style = "thin",
         style_preset = bufferline.style_preset.minimal,
         always_show_bufferline = true,
         hover = {
