@@ -52,5 +52,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 opt.mouse = ""
 
 -- Transparency on my theme
-vim.g.nightflyTransparent = true
-
+vim.g.nightflyTransparent = false
