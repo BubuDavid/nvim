@@ -1,6 +1,9 @@
 local opt = vim.opt
 local o = vim.o
 
+-- Add commentary options
+vim.g.skip_ts_context_commentstring_module = true
+
 -- Line Numbers
 opt.relativenumber = true
 opt.number = true
@@ -41,11 +44,11 @@ o.guicursor = true
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Remove Mouse interactions with Vim
