@@ -8,10 +8,6 @@ local set_keymap = function(mode, input, action, desc, noremap)
 	end
 end
 
--- Easy way of doing stuff (comment if you want to be old school)
--- set_keymap("i", "jk", "<ESC>", "Easy way to escape insert mode")
--- set_keymap("n", "<leader><space>", ":", "Easy way to access command mode")
-
 -- Open Explorer
 set_keymap({ "n", "v" }, "<leader>pv", vim.cmd.Exp, "Open the explorer")
 

@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Remove Mouse interactions with Vim
-opt.mouse = ""
+opt.mouse = "a"
 
 -- Transparency on my theme
 vim.g.nightflyTransparent = false
