@@ -34,6 +34,14 @@ set_keymap({ "n", "v" }, "<S-tab>", vim.cmd.bp, "Go to previous buffer")
 -- Delete buffer
 set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
 
+-- Go to defition and make the cursor at the top of the screen
+set_keymap("n", "gd", "gdzt", "Go to definition and make the cursor at the top of the screen")
+
+-- After control + d, the cursor will be at the center of the screen
+set_keymap("n", "<C-d>", "<C-d>zz", "After control + d, the cursor will be at the center of the screen")
+-- After control + u, the cursor will be at the center of the screen
+set_keymap("n", "<C-u>", "<C-u>zz", "After control + u, the cursor will be at the center of the screen")
+
 -- Selection actions to auto cgn word under cursor
 set_keymap("n", "cgn", "*Ncgn")
 -- If I forgot to do the last command (and do something like ciw), this command cgn from the last modified word
