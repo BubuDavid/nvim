@@ -28,8 +28,8 @@ set_keymap("n", "<leader>Y", '"+Y', "Copy things from nvim to computer")
 set_keymap("v", "<leader>y", '"+y', "Copy things from nvim to computer")
 
 -- Travel between buffers
-set_keymap({ "n", "i" }, "<tab>", vim.cmd.bn, "Go to next buffer")
-set_keymap({ "n", "i" }, "<S-tab>", vim.cmd.bp, "Go to previous buffer")
+set_keymap({ "n", "v" }, "<tab>", vim.cmd.bn, "Go to next buffer")
+set_keymap({ "n", "v" }, "<S-tab>", vim.cmd.bp, "Go to previous buffer")
 
 -- Delete buffer
 set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
