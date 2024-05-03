@@ -40,6 +40,7 @@ return {
 				"python",
 				"c",
 				"cpp",
+				"dockerfile",
 			},
 			incremental_selection = {
 				enable = true,
@@ -98,7 +99,7 @@ return {
 						["<leader>A"] = "@parameter.inner",
 					},
 				},
-			}
+			},
 		})
 	end,
 }
