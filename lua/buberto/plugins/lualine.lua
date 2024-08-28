@@ -10,10 +10,8 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = "material",
-				-- component_separators = '|',
-				component_separators = { left = "", right = "" },
-				-- section_separators = '',
-				section_separators = { left = "", right = "" },
+				component_separators = { left = "|", right = "|" },
+				section_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_x = {
