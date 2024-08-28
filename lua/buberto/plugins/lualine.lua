@@ -7,9 +7,9 @@ return {
 
 		-- configure lualine with modified theme
 		lualine.setup({
+			theme = "catppuccin",
 			options = {
 				icons_enabled = true,
-				theme = "material",
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" },
 			},
