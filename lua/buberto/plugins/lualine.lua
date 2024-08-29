@@ -14,6 +14,10 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			sections = {
+				lualine_c = {
+					{ "filename", path = 1 },
+					-- TODO: Add harpoon position
+				},
 				lualine_x = {
 					{
 						lazy_status.updates,
