@@ -10,14 +10,14 @@ return {
 	{
 		"rose-pine/neovim",
 		config = function()
-			-- ColorMyPencils("rose-pine-moon")
+			ColorMyPencils("rose-pine-moon")
 		end,
 	},
 
 	{
 		"folke/tokyonight.nvim",
 		config = function()
-			ColorMyPencils("tokyonight")
+			-- ColorMyPencils("tokyonight")
 		end,
 	},
 }

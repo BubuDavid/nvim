@@ -50,7 +50,7 @@ set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], "cgn but if you forget 
 -- Fun replace of under the cursor word globally
 set_keymap(
 	"n",
-	"<leader>s",
+	"<leader>rg",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]],
 	"Replace under the cursor word automatically"
 )
