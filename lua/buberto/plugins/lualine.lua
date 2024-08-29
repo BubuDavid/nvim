@@ -7,7 +7,7 @@ return {
 
 		-- configure lualine with modified theme
 		lualine.setup({
-			theme = "catppuccin",
+			-- theme = "tokyonight",
 			options = {
 				icons_enabled = true,
 				component_separators = { left = "|", right = "|" },

@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "buberto.plugins" }, { import = "buberto.plugins.lsp" } }, {
-	install = { colorscheme = { "catppuccin" } },
+	-- install = { colorscheme = { "rose-pine-moon" } },
 	checker = {
 		enabled = true,
 		notify = false,

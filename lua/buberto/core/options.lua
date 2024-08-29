@@ -39,7 +39,8 @@ opt.termguicolors = true
 opt.cursorline = true
 
 -- Cursor always in block
-o.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+o.guicursor =
+	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -53,6 +54,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Remove Mouse interactions with Vim
 opt.mouse = "a"
-
--- Transparency on my theme
-vim.g.nightflyTransparent = false

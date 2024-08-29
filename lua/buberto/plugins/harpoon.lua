@@ -67,5 +67,13 @@ return {
 		vim.keymap.set("n", "<leader>4", function()
 			harpoon:list():select(4)
 		end, { desc = "Go to mark 4" })
+
+		-- Toggle previous & next buffers stored within Harpoon list
+		vim.keymap.set("n", "<tab>", function()
+			harpoon:list():prev()
+		end)
+		vim.keymap.set("n", "<S-tab>", function()
+			harpoon:list():next()
+		end)
 	end,
 }
