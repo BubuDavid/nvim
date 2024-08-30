@@ -35,7 +35,7 @@ set_keymap("v", "<leader>y", '"+y', "Copy things from nvim to computer")
 set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
 
 -- Go to defition and make the cursor at the top of the screen
-set_keymap("n", "gd", "gdzt", "Go to definition and make the cursor at the top of the screen")
+-- set_keymap("n", "gd", "gdzt", "Go to definition and make the cursor at the top of the screen")
 
 -- After control + d, the cursor will be at the center of the screen
 set_keymap("n", "<C-d>", "<C-d>zz", "After control + d, the cursor will be at the center of the screen")
