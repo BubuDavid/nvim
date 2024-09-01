@@ -5,5 +5,6 @@ return {
 			expr = true,
 			replace_keycodes = false,
 		})
+		vim.keymap.set("n", "<leader>cd", ":Copilot disable <CR>", {})
 	end,
 }
