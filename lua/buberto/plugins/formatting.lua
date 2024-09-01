@@ -19,6 +19,7 @@ return {
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
+				c = { "clang-format" },
 			},
 		})
 
