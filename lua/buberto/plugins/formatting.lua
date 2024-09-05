@@ -23,6 +23,11 @@ return {
 			},
 		})
 
+		-- Config Black with line-length of 100
+		conform.formatters.black = {
+			prepend_args = { "--line-length", "100" },
+		}
+
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
 				lsp_fallback = true,
