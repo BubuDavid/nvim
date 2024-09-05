@@ -54,3 +54,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Remove Mouse interactions with Vim
 opt.mouse = "a"
+
+-- Set the colored line for 80 characters
+opt.colorcolumn = "80"
