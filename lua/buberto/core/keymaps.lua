@@ -54,3 +54,6 @@ set_keymap(
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]],
 	"Replace under the cursor word automatically"
 )
+
+-- DEV
+set_keymap("n", "<leader><leader>x", ":so %<CR>", "Execute lua file")
