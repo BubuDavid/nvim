@@ -27,21 +27,11 @@ return {
 			print("Mark Removed 🗑")
 		end)
 
-		vim.keymap.set("n", "<leader>1", function()
-			harpoon:list():select(1)
-		end, { desc = "Go to mark 1" })
-
-		vim.keymap.set("n", "<leader>2", function()
-			harpoon:list():select(2)
-		end, { desc = "Go to mark 2" })
-
-		vim.keymap.set("n", "<leader>3", function()
-			harpoon:list():select(3)
-		end, { desc = "Go to mark 3" })
-
-		vim.keymap.set("n", "<leader>4", function()
-			harpoon:list():select(4)
-		end, { desc = "Go to mark 4" })
+		for i = 1, 9 do
+			vim.keymap.set("n", "<leader>" .. i, function()
+				harpoon:list():select(i)
+			end, { desc = "Go to mark " .. i })
+		end
 
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "<S-tab>", function()
