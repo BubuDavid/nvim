@@ -1,7 +1,7 @@
 return {
-	"nvim-telescope/telescope.nvim", 
+	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-	dependencies = { 
+	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -9,10 +9,9 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		
+
 		telescope.setup({
 			defaults = {
-				path_display = { "truncate " },
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -20,16 +19,44 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
+				layout_config = {
+					prompt_position = "top",
+					horizontal = {
+						mirror = false,
+						preview_cutoff = 100,
+						preview_width = 0.5,
+					},
+					vertical = {
+						mirror = true,
+						preview_cutoff = 0.4,
+					},
+					flex = {
+						flip_columns = 128,
+					},
+					height = 0.94,
+					width = 0.86,
+				},
 			},
 		})
 
 		telescope.load_extension("fzf")
 
-		vim.keymap.set("n", "<C-p>", "<cmd>Telescope git_files<CR>", { desc = "Fuzzy Find files in git (ignore node modules for example" })
-		vim.keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy Find files in cwd" })
-		vim.keymap.set("n", "<leader>of", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy Find recent files" })
-		vim.keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
-		vim.keymap.set("n", "<leader>usg", "<cmd>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
-		
-	end
+		vim.keymap.set(
+			"n",
+			"<C-p>",
+			"<cmd>Telescope git_files<CR>",
+			{ desc = "Fuzzy Find files in git (ignore node modules for example" }
+		)
+		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy Find files in cwd" })
+		vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy Find recent files" })
+		vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "Find Keymaps" })
+		vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
+		vim.keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "Search Git Commits" })
+		vim.keymap.set(
+			"n",
+			"<leader>fu",
+			"<cmd>Telescope grep_string<CR>",
+			{ desc = "Find string under cursor in cwd" }
+		)
+	end,
 }
