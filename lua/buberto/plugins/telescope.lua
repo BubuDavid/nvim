@@ -12,6 +12,13 @@ return {
 
 		telescope.setup({
 			defaults = {
+				file_ignore_patterns = {
+					".git",
+					"node_modules",
+					"venv",
+					"__pycache__",
+					".pytest_cache",
+				},
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -47,17 +54,25 @@ return {
 			"<cmd>Telescope git_files<CR>",
 			{ desc = "Fuzzy Find files in git (ignore node modules for example" }
 		)
-		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy Find files in cwd" })
-		vim.keymap.set("n", "<leader>fh", "<cmd>Telescope find_files hidden=true<CR>", { desc = "Fuzzy Find files in cwd" })
+		-- vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy Find files in cwd" })
+		vim.keymap.set(
+			"n",
+			"<leader>ff",
+			"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-u'}})<cr>"
+		)
 		vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy Find recent files" })
 		vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "Find Keymaps" })
 		vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
-		vim.keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "Search Git Commits" })
 		vim.keymap.set(
 			"n",
 			"<leader>fu",
 			"<cmd>Telescope grep_string<CR>",
 			{ desc = "Find string under cursor in cwd" }
 		)
+
+		vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Search Git Commits" })
+		vim.keymap.set("n", "<leader>gs", "<cmd>lua require'telescope.builtin'.git_status()<CR>", {
+			desc = "Fuzzy Find git status",
+		})
 	end,
 }
