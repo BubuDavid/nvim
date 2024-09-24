@@ -21,7 +21,7 @@ return {
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-			dashboard.button("SPC tr", "  > Toggle file explorer", "<cmd>Neotree toggle current<CR>"),
+			dashboard.button("SPC nt", "  > Toggle file explorer", "<cmd>Neotree toggle current<CR>"),
 			dashboard.button("SPC sf", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
 			dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
 		}
