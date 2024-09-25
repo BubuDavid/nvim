@@ -54,7 +54,6 @@ return {
 			"<cmd>Telescope git_files<CR>",
 			{ desc = "Fuzzy Find files in git (ignore node modules for example" }
 		)
-		-- vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy Find files in cwd" })
 		vim.keymap.set(
 			"n",
 			"<leader>ff",
@@ -68,6 +67,13 @@ return {
 			"<leader>fu",
 			"<cmd>Telescope grep_string<CR>",
 			{ desc = "Find string under cursor in cwd" }
+		)
+		vim.keymap.set("n", "<leader>fr", "<cmd>Telescope registers<CR>", { desc = "Search Registers" })
+		vim.keymap.set(
+			"n",
+			"<leader>f/",
+			"<cmd>Telescope current_buffer_fuzzy_find<CR>",
+			{ desc = "Search Registers" }
 		)
 
 		vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Search Git Commits" })

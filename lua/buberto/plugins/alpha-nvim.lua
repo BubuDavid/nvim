@@ -22,7 +22,11 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
 			dashboard.button("SPC nt", "  > Toggle file explorer", "<cmd>Neotree toggle current<CR>"),
-			dashboard.button("SPC sf", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+			dashboard.button(
+				"SPC ff",
+				"󰱼 > Find File",
+				"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-u'}})<cr>"
+			),
 			dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
 		}
 
