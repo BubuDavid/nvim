@@ -57,3 +57,14 @@ opt.mouse = "a"
 
 -- Set the colored line for 80 characters
 opt.colorcolumn = "100"
+
+-- Define a function to remove colorcolumn
+local function remove_colorcolumn()
+	vim.opt.colorcolumn = ""
+end
+
+-- Set an autocommand for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "txt", "json" }, -- List your filetypes here
+	callback = remove_colorcolumn,
+})
