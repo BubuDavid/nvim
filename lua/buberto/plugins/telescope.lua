@@ -27,7 +27,7 @@ return {
 					},
 				},
 				layout_config = {
-					prompt_position = "top",
+					prompt_position = "bottom",
 					horizontal = {
 						mirror = false,
 						preview_cutoff = 100,
@@ -80,5 +80,13 @@ return {
 		vim.keymap.set("n", "<leader>gs", "<cmd>lua require'telescope.builtin'.git_status()<CR>", {
 			desc = "Fuzzy Find git status",
 		})
+		vim.keymap.set(
+			"n",
+			"<leader>fh",
+			"<cmd>lua require'telescope.builtin'.live_grep({ cwd = 'venv/lib/python3.12/site-packages' })<cr>",
+			{
+				desc = "Grep inside venv/",
+			}
+		)
 	end,
 }
