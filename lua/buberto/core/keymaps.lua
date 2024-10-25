@@ -31,6 +31,10 @@ set_keymap("v", "<leader>y", '"+y', "Copy things from nvim to computer")
 -- set_keymap({ "n", "v" }, "<tab>", vim.cmd.bn, "Go to next buffer")
 -- set_keymap({ "n", "v" }, "<S-tab>", vim.cmd.bp, "Go to previous buffer")
 
+-- Map the jump motions correctly
+set_keymap("n", "<C-o>", "<C-o>", "Go to previous jump element", true)
+set_keymap("n", "<C-i>", "<C-i>", "Go to next jump element", true)
+
 -- Delete buffer
 set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
 
