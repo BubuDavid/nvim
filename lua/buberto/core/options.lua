@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 opt.mouse = "a"
 
 -- Set the colored line for 80 characters
-opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 
 -- Define a function to remove colorcolumn
 local function remove_colorcolumn()
