@@ -12,7 +12,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			ColorMyPencils("rose-pine-moon")
+			-- ColorMyPencils("rose-pine-moon")
 		end,
 	},
 
@@ -30,6 +30,15 @@ return {
 		priority = 1000,
 		config = function()
 			-- ColorMyPencils("catppuccin-macchiato")
+		end,
+	},
+
+	{
+		"Shatur/neovim-ayu",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			ColorMyPencils("ayu-dark")
 		end,
 	},
 }
