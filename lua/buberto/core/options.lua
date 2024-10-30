@@ -68,3 +68,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "txt", "json" }, -- List your filetypes here
 	callback = remove_colorcolumn,
 })
+
+
+-- Avante recommended stuff
+vim.opt.laststatus = 3
