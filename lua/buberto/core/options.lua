@@ -65,10 +65,9 @@ end
 
 -- Set an autocommand for specific file types
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "txt", "json" }, -- List your filetypes here
+	pattern = { "markdown", "txt", "json", "Avante*" },
 	callback = remove_colorcolumn,
 })
-
 
 -- Avante recommended stuff
 vim.opt.laststatus = 3

@@ -5,6 +5,20 @@ return {
 	version = false, -- set this if you want to always pull the latest change
 	opts = {
 		provider = "copilot",
+		hints = { enable = false },
+		windows = {
+			wrap = true,
+			width = 30,
+			sidebar_header = {
+				enabled = true,
+				align = "center",
+				rounded = true,
+			},
+			edit = {
+				border = "rounded",
+				start_insert = false, -- Start insert mode when opening the edit window
+			},
+		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
@@ -38,9 +52,30 @@ return {
 			-- Make sure to set this up properly if you have lazy=true
 			"MeanderingProgrammer/render-markdown.nvim",
 			opts = {
+				enabled = true,
 				file_types = { "markdown", "Avante" },
+				render_modes = true,
+				win_options = {
+					conceallevel = { rendered = 2 },
+					concealcursor = { rendered = "nc" },
+				},
+				anti_conceal = {
+					-- Preserve glyphs in normal mode but make them "anti_conceal" in insert mode to
+					-- replicate concealcursor behaviour
+					ignore = {
+						bullet = { "n" },
+						callout = { "n" },
+						check_icon = { "n" },
+						check_scope = { "n" },
+						code_language = { "n" },
+						dash = { "n" },
+						head_icon = { "n" },
+						link = { "n" },
+						quote = { "n" },
+						table_border = { "n" },
+					},
+				},
 			},
-			ft = { "markdown", "Avante" },
 		},
 	},
 }
