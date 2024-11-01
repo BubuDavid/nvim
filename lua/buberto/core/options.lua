@@ -55,18 +55,40 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Remove Mouse interactions with Vim
 opt.mouse = "a"
 
--- Set the colored line for 80 characters
-opt.colorcolumn = "79"
+-- Set the colored line for 79 characters PEP-8
+local function add_colorcolumn()
+	opt.colorcolumn = "79"
+end
 
 -- Define a function to remove colorcolumn
 local function remove_colorcolumn()
 	vim.opt.colorcolumn = ""
 end
 
--- Set an autocommand for specific file types
+-- Remove colorcolumn by default
+remove_colorcolumn()
+
+-- Remove colocolumn for avante
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "txt", "json", "Avante*" },
+	pattern = { "Avante*" },
 	callback = remove_colorcolumn,
+})
+
+-- Set an autocommand for specific file types to add the colorcolumn
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"python",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"c",
+		"cpp",
+		"rust",
+		"go",
+		"lua",
+	},
+	callback = add_colorcolumn,
 })
 
 -- Avante recommended stuff

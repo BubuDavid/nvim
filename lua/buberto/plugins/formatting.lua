@@ -23,7 +23,7 @@ return {
 			},
 		})
 
-		-- Config Black with line-length of 100
+		-- Config Black with line-length of 79
 		conform.formatters.black = {
 			prepend_args = { "--line-length", "79" },
 		}
