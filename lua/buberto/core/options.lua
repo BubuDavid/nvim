@@ -91,5 +91,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = add_colorcolumn,
 })
 
+-- Set configfiles autocommand
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { ".env", ".env.example", ".env.test", ".env.test.example" },
+	callback = function()
+		vim.bo.filetype = "conf"
+	end,
+})
+
 -- Avante recommended stuff
 vim.opt.laststatus = 3
