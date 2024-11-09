@@ -77,6 +77,7 @@ return {
 		)
 
 		vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Search Git Commits" })
+		vim.keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<CR>", { desc = "Fuzzy Find jumplist" })
 		vim.keymap.set("n", "<leader>gs", "<cmd>lua require'telescope.builtin'.git_status()<CR>", {
 			desc = "Fuzzy Find git status",
 		})
