@@ -70,7 +70,7 @@ remove_colorcolumn()
 
 -- Remove colocolumn for avante
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "Avante*", "json", "conf"},
+	pattern = { "Avante*", "json", "conf", "neo-tree"},
 	callback = remove_colorcolumn,
 })
 
