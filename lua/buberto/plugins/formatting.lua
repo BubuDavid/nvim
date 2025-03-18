@@ -29,6 +29,7 @@ return {
 		}
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+			print("Formatted ✨")
 			conform.format({
 				lsp_fallback = true,
 				async = false,

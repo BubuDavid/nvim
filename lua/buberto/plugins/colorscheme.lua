@@ -12,7 +12,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			-- ColorMyPencils("rose-pine-moon")
+			-- ColorMyPencils("rose-pine-main")
 		end,
 	},
 
