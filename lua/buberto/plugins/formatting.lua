@@ -19,7 +19,7 @@ return {
 				lua = { "stylua" },
 				c = { "clang-format" },
 				toml = { "pyproject-fmt" },
-				python = { "black", "isort" },
+				python = { "isort", "black" },
 			},
 		})
 
