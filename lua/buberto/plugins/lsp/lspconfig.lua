@@ -66,7 +66,6 @@ return {
 				python = {
 					analysis = {
 						diagnosticMode = "openFilesOnly",
-						reportUnusedVariable = "none", -- This should disable the specific diagnostic
 					},
 				},
 			},
