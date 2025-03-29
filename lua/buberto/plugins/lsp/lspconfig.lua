@@ -20,10 +20,14 @@ return {
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+			keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
-			opts.desc = "Go to declaration"
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+			-- NEW: Open definition in a new tab
+			opts.desc = "Open declaration in new tab"
+			keymap.set("n", "gD", function()
+				vim.lsp.buf.declaration()
+				vim.cmd("tabnew")
+			end, opts)
 
 			opts.desc = "Show LSP definitions"
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions

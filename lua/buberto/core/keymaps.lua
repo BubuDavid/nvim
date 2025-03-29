@@ -51,6 +51,10 @@ set_keymap("n", "cgn", "*Ncgn")
 -- If I forgot to do the last command (and do something like ciw), this command cgn from the last modified word
 set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], "cgn but if you forget the cgn", true)
 
+-- Tab actions
+set_keymap("n", "<leader>>", ":tabn<CR>", "Go to next tab")
+set_keymap("n", "<leader><", ":tabp<CR>", "Go to previous tab")
+
 -- Fun replace of under the cursor word globally
 set_keymap(
 	"n",
