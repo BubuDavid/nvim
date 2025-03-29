@@ -1,16 +1,9 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-	},
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -20,14 +13,10 @@ return {
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
-			-- NEW: Open definition in a new tab
-			opts.desc = "Open declaration in new tab"
-			keymap.set("n", "gD", function()
-				vim.lsp.buf.declaration()
-				vim.cmd("tabnew")
-			end, opts)
+			opts.desc = "Go to declaration"
+			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
@@ -63,77 +52,72 @@ return {
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 		end
 
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- configure html server
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure typescript server with plugin
-		lspconfig["ts_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure tailwindcss server
-		lspconfig["tailwindcss"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure emmet language server
-		lspconfig["emmet_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
-		})
-
-		-- configure python server
+		-- Setup pyright for Python
 		lspconfig["pyright"].setup({
-			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				python = {
+					analysis = {
+						diagnosticMode = "openFilesOnly",
+						reportUnusedVariable = "none", -- This should disable the specific diagnostic
+					},
+				},
+			},
+			-- This is the important part - it tells Neovim to ignore "unnecessary" diagnostics
+			handlers = {
+				["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
+					local filtered_diagnostics = {}
+					for _, diagnostic in ipairs(result.diagnostics) do
+						-- Keep the diagnostic unless it's an unused variable with __ prefix
+						local keep = true
+
+						-- Check if it's an "unnecessary" diagnostic (tag==1) for an unused variable
+						if
+							diagnostic.tags
+							and diagnostic.tags[1] == 1
+							and diagnostic.message:match("is not accessed")
+						then
+							-- Extract the variable name from the message
+							local var_name =
+								diagnostic.message:match('"([^"]+)" is not accessed')
+
+							-- Skip if the variable starts with __ (dunder)
+							if var_name and var_name:match("^_") then
+								keep = false
+							end
+						end
+
+						if keep then
+							table.insert(filtered_diagnostics, diagnostic)
+						end
+					end
+
+					result.diagnostics = filtered_diagnostics
+					vim.lsp.handlers["textDocument/publishDiagnostics"](_, result, ctx, config)
+				end,
+			},
 		})
 
-		-- configure c server
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure lua server (with special settings)
+		-- Setup lua_ls for Lua
 		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
 			on_attach = on_attach,
-			settings = { -- custom settings for lua
+			settings = {
 				Lua = {
-					-- make the language server recognize "vim" global
 					diagnostics = {
 						globals = { "vim" },
 					},
 					workspace = {
-						-- make language server aware of runtime files
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
 					},
+					telemetry = { enable = false },
 				},
 			},
 		})

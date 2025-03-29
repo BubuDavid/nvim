@@ -5,24 +5,12 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		-- Setup linting for Python with special handling
-		lint.linters.pylint.cmd = function()
-			-- Use the .venv in the current directory if it exists
-			local venv_path = vim.fn.getcwd() .. "/.venv/bin/pylint"
-			if vim.fn.filereadable(venv_path) == 1 then
-				return venv_path
-			end
-			-- Fallback to the system pylint if .venv does not exist
-			return "pylint"
-		end
-
 		lint.linters_by_ft = {
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
-			python = { "pylint" },
 			c = { "cpplint" }, -- To configure filewise options create CPPLINT.cfg file
 			cpp = { "cpplint" }, -- To configure filewise options create CPPLINT.cfg file
 		}
