@@ -13,8 +13,12 @@ return {
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = {
-					".git",
+					-- Generals
+					".git/",
+					-- JavaScript & TypeScript
 					"node_modules",
+					".next",
+					-- Python
 					"venv",
 					"__pycache__",
 					".pytest_cache",
