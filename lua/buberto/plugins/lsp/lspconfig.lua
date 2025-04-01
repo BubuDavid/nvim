@@ -120,5 +120,19 @@ return {
 				},
 			},
 		})
+
+		-- Setup tsserver for TypeScript
+		lspconfig["ts_ls"].setup({
+			on_attach = on_attach,
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+			settings = {
+				typescript = {
+					suggest = {
+						autoImports = true,
+						completeFunctionCalls = true,
+					},
+				},
+			},
+		})
 	end,
 }
