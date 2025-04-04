@@ -134,5 +134,23 @@ return {
 				},
 			},
 		})
+
+		-- Setup tailwindcss for Tailwind CSS
+		lspconfig["tailwindcss"].setup({
+			on_attach = on_attach,
+			filetypes = { "typescriptreact", "typescript.tsx", "html", "css" },
+			settings = {
+				tailwindCSS = {
+					classAttributes = { "class", "className", "classList" },
+					lint = {
+						cssConflict = "warning",
+						invalidApply = "error",
+						invalidScreen = "error",
+						invalidTailwindDirective = "error",
+						recommendedVariantOrder = "warning",
+					},
+				},
+			},
+		})
 	end,
 }
