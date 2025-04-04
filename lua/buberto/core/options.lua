@@ -70,7 +70,7 @@ remove_colorcolumn()
 
 -- Remove colocolumn for avante
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "Avante*", "json", "conf", "neo-tree"},
+	pattern = { "Avante*", "json", "conf", "neo-tree" },
 	callback = remove_colorcolumn,
 })
 
@@ -101,3 +101,21 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- Avante recommended stuff
 vim.opt.laststatus = 3
+
+-- for open help in a different
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "help",
+	callback = function()
+		if vim.bo.filetype == "help" and #vim.api.nvim_list_wins() > 1 then
+			vim.cmd("wincmd T")
+			vim.api.nvim_buf_set_keymap(0, "n", "q", ":tabclose<CR>", {
+				noremap = true,
+				silent = true,
+				desc = "Close help tab",
+			})
+		end
+	end,
+	group = vim.api.nvim_create_augroup("HelpInTabs", {
+		clear = true,
+	}),
+})
