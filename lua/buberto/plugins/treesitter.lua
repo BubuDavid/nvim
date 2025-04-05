@@ -6,15 +6,16 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
-		-- import nvim-treesitter plugin
 		local treesitter = require("nvim-treesitter.configs")
 
-		-- configure treesitter
-		treesitter.setup({ -- enable syntax highlighting
+		treesitter.setup({
+			auto_install = true,
+			ignore_install = {},
+			sync_install = true,
+			modules = {},
 			highlight = {
 				enable = true,
 			},
-			-- enable indentation
 			indent = { enable = true },
 			ensure_installed = {
 				"json",
@@ -24,8 +25,6 @@ return {
 				"yaml",
 				"html",
 				"css",
-				-- "markdown",
-				-- "markdown_inline",
 				"bash",
 				"lua",
 				"vim",
