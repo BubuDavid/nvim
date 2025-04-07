@@ -14,7 +14,10 @@ opt.shiftwidth = 2 -- 2 Spaces for indent width
 opt.autoindent = true -- Copy indent from current line when starting a new one
 
 -- Bye bye highlight on search
-opt.hlsearch = false
+-- opt.hlsearch = false
+
+-- Signcolumn stable
+opt.signcolumn = "yes:1"
 
 -- Like incremental search
 opt.incsearch = true

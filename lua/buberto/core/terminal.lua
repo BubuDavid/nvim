@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Simple keymap for closing the terminal
-vim.keymap.set("t", "<leader><esc><esc>", "<c-\\><c-n>")
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 -- Simple keymap for creating a small terminal in the bottom part of the screen
 vim.keymap.set("n", "<leader>st", function()
@@ -72,4 +72,5 @@ local function toggle_terminal()
 end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal)
+vim.keymap.set({ "n" }, "<leader>tt", toggle_terminal)
+vim.keymap.set({ "t" }, "tt", toggle_terminal)
