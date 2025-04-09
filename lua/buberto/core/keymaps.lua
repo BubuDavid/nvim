@@ -10,8 +10,19 @@ local set_keymap = function(mode, input, action, desc, noremap)
 	end
 end
 
+-- New line without insert mode
+set_keymap("n", "O", "O<Esc>", "New line above without insert mode")
+set_keymap("n", "o", "o<Esc>", "New line below without insert mode")
+
+-- Go to empty line with center cursor
+set_keymap("n", "}", "}zz", "Go to next empty line with center cursor")
+set_keymap("n", "{", "{zz", "Go to previous empty line with center cursor")
+
 -- Open Explorer
 set_keymap({ "n", "v" }, "<leader>pv", vim.cmd.Exp, "Open the explorer")
+
+-- Bye bye highlight on search
+set_keymap("n", "<leader>nn", "<cmd>noh<CR>")
 
 -- Move while highlighting
 set_keymap("v", "J", ":m '>+1<CR>gv=gv", "Move Down the selected text")
