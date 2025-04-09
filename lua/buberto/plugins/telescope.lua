@@ -54,12 +54,6 @@ return {
 
 		vim.keymap.set(
 			"n",
-			"<C-p>",
-			"<cmd>Telescope git_files<CR>",
-			{ desc = "Fuzzy Find files in git (ignore node modules for example" }
-		)
-		vim.keymap.set(
-			"n",
 			"<leader>ff",
 			"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-u'}})<cr>"
 		)
@@ -88,7 +82,7 @@ return {
 		vim.keymap.set(
 			"n",
 			"<leader>fh",
-			"<cmd>lua require'telescope.builtin'.live_grep({ cwd = 'venv/lib/python3.12/site-packages' })<cr>",
+			"<cmd>lua require'telescope.builtin'.live_grep({ cwd = '.venv/lib/python3.12/site-packages' })<cr>",
 			{
 				desc = "Grep inside venv/",
 			}
