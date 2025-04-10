@@ -72,3 +72,18 @@ set_keymap(
 
 -- DEV
 set_keymap("n", "<leader><leader>x", ":so %<CR>", "Execute lua file")
+
+-- TELESCOPE & LSP
+set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", "Go to definition")
+set_keymap("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", "Go to type definition")
+set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<CR>", "Go to implementation")
+set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", "Go to references")
+set_keymap("n", "<leader>rn", "<cmd>Telescope lsp_rename<CR>", "Rename symbol")
+set_keymap("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<CR>", "Code actions")
+set_keymap("n", "<leader>vD", "<cmd>Telescope diagnostics<CR>", "Diagnostics")
+set_keymap("n", "<leader>vd", function()
+	vim.diagnostic.open_float({ border = "rounded" })
+end, "Diagnostics")
+set_keymap("n", "K", function()
+	vim.lsp.buf.hover({ border = "rounded" })
+end, "Hover")
