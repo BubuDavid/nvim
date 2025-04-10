@@ -10,10 +10,6 @@ local set_keymap = function(mode, input, action, desc, noremap)
 	end
 end
 
--- New line without insert mode
-set_keymap("n", "O", "O<Esc>", "New line above without insert mode")
-set_keymap("n", "o", "o<Esc>", "New line below without insert mode")
-
 -- Go to empty line with center cursor
 set_keymap("n", "}", "}zz", "Go to next empty line with center cursor")
 set_keymap("n", "{", "{zz", "Go to previous empty line with center cursor")
