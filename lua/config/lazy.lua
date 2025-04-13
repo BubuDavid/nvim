@@ -34,7 +34,7 @@ require("lazy").setup({
 	checker = { enabled = true },
 	-- Automatically reloads lazy when change is detected
 	-- Commented for default
-	-- change_detection = {
-	--	enabled = false,
-	-- }
+	change_detection = {
+		enabled = false,
+	}
 })
