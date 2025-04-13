@@ -2,8 +2,14 @@
 
 vim.g.mapleader = " "
 
-local set_keymap = function(mode, lhs, rhs, desc)
-	vim.keymap.set(mode, lhs, rhs, { desc = desc })
+local set_keymap = function(mode, lhs, rhs, opts)
+	if type(opts) == "string" then
+		opts = {
+			desc = opts
+		}
+	end
+
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 set_keymap({ "n", "v" }, "}", "}zz", "Go to next empty line with centered cursor")
@@ -13,6 +19,16 @@ set_keymap("n", "<leader>nn", vim.cmd.noh, "Remove highlight after search")
 
 set_keymap("v", "K", ":m '<-2<CR>gv=gv", "Move Up the selected text")
 set_keymap("v", "J", ":m '>+1<CR>gv=gv", "Move Down the selected text")
+
+-- Window Commands
+set_keymap("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+set_keymap("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+set_keymap("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+set_keymap("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+set_keymap("n", "<C-Up>", "<cmd>resize +2<cr>", "Increase Window Height")
+set_keymap("n", "<C-Down>", "<cmd>resize -2<cr>", "Decrease Window Height")
+set_keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "Decrease Window Width")
+set_keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "Increase Window Width")
 
 set_keymap("x", "<leader>p", '"_dP', "Delete something without copying it")
 set_keymap("n", "<leader>d", '"_d', "Delete something without copying it")
@@ -54,7 +70,6 @@ set_keymap("i", "<C-p>", "<C-\\><C-O>p", "Move right one word in insert mode")
 set_keymap("i", "<C-d>", "<C-\\><C-O>x", "Delete character after cursor")
 
 -- BUFFER NAVIGATION
-set_keymap("n", "<leader>fb", ":buffers<CR>", "List all buffers")
 set_keymap("n", "<leader>1", ":b#<CR>", "Go to previous buffer")
 set_keymap("n", "<leader>2", ":bn<CR>", "Rotate buffers with bufnext")
 

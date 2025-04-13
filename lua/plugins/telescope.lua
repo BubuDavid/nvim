@@ -9,6 +9,7 @@ return {
 		}
 	},
 	config = function()
+		local actions = require("telescope.actions")
 		-- Simple FZF load
 		require("telescope").setup({
 			defaults = {
@@ -32,6 +33,11 @@ return {
 					"**venv/",
 					"__pycache__",
 					".pytest_cache",
+				},
+				mappings = {
+					i = {
+						["<C-y>"] = actions.select_default
+					}
 				},
 			},
 			extensions = {
@@ -83,6 +89,10 @@ return {
 		vim.keymap.set("n", "<leader>fr", function()
 			builtin.registers(ivy_theme)
 		end, { desc = "Telescope Registers" })
+
+		vim.keymap.set("n", "<leader>fb", function()
+			builtin.buffers(ivy_theme)
+		end, { desc = "Telescope Buffers" })
 
 		vim.keymap.set("n", "<leader>fj", function()
 			builtin.jumplist(ivy_theme)

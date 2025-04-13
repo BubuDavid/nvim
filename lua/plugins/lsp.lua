@@ -15,7 +15,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		servers = {
-			lua_ls = {},
 			pyright = {
 				handlers = {
 					["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
@@ -35,7 +34,7 @@ return {
 									'"([^"]+)" is not accessed'
 								)
 
-								-- Skip if the variable starts with __ (dunder)
+								-- Skip if the variable starts with _ (_variable)
 								if var_name and var_name:match("^_") then
 									keep = false
 								end
@@ -56,6 +55,7 @@ return {
 					end,
 				},
 			},
+			lua_ls = {},
 			ts_ls = {},
 			tailwindcss = {},
 		},
