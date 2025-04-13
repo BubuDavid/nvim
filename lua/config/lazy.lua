@@ -32,7 +32,9 @@ require("lazy").setup({
 	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
-	change_detection = {
-		enabled = false,
-	}
+	-- Automatically reloads lazy when change is detected
+	-- Commented for default
+	-- change_detection = {
+	--	enabled = false,
+	-- }
 })
