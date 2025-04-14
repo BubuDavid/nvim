@@ -19,5 +19,12 @@ return {
 		})
 		-- OIL
 		vim.keymap.set("n", "<leader>nt", ":Oil<CR>", { desc = "Open Oil" })
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "oil",
+			group = vim.api.nvim_create_augroup("OilExit", { clear = true }),
+			callback = function()
+				vim.keymap.set("n", "<leader>nt", ":bd<CR>", { desc = "Close Oil with the same keymap", buffer = true })
+			end
+		})
 	end
 }
