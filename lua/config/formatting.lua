@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("FileType", {
 			vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted_lines)
 
 			print("Formatted with isort and black ✨")
-		end, { desc = "Simple usage of black and isort" })
+		end, { desc = "Simple usage of black and isort", buffer = true })
 	end
 
 })

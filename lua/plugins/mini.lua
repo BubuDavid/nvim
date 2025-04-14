@@ -22,7 +22,7 @@ return {
 		})
 
 		-- Surround
-		require('mini.surround').setup()
+		-- require('mini.surround').setup()
 
 		-- AutoPairs
 		require('mini.pairs').setup({})
