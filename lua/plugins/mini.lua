@@ -25,7 +25,18 @@ return {
 		require('mini.surround').setup()
 
 		-- AutoPairs
-		require('mini.pairs').setup()
+		require('mini.pairs').setup({})
+
+		local lt_opts = {
+			action = 'open',
+			pair = '<>',
+			neigh_pattern = '[^\\].',
+			register = { cr = false },
+		}
+		MiniPairs.map('i', '<', lt_opts)
+
+		local gt_opts = { action = 'close', pair = '<>', register = { cr = false } }
+		MiniPairs.map('i', '>', gt_opts)
 
 		-- Starter Screen
 		require("mini.starter").setup()
