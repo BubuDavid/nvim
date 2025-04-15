@@ -47,7 +47,9 @@ return {
 		require("telescope").load_extension("fzf")
 
 		local builtin = require("telescope.builtin")
-		local ivy_theme = require("telescope.themes").get_ivy()
+		local ivy_theme = require("telescope.themes").get_ivy(
+			{ no_ignore = true, no_ignore_parent = true, hidden = true }
+		)
 
 		vim.keymap.set("n", "<leader>ff", function()
 			builtin.find_files(ivy_theme)
