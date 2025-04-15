@@ -63,9 +63,8 @@ set_keymap("n", "<leader>rn", function()
 end, "LSP Smart Rename")
 
 -- VIM MOTIONS ON INSERT MODE
-set_keymap("i", "<C-j>", "<C-\\><C-O>h", "Move left one space in insert mode")
-set_keymap("i", "<C-h>", "<C-\\><C-O>b", "Move left one word in insert mode")
-set_keymap("i", "<C-l>", "<C-\\><C-O>e", "Move right one word in insert mode")
+set_keymap("i", "<C-h>", "<C-\\><C-O>h", "Move left one word in insert mode")
+set_keymap("i", "<C-l>", "<C-\\><C-O>l", "Move right one word in insert mode")
 set_keymap("i", "<C-p>", "<C-\\><C-O>p", "Move right one word in insert mode")
 set_keymap("i", "<C-d>", "<C-\\><C-O>x", "Delete character after cursor")
 
