@@ -55,6 +55,7 @@ end, "Diagnostics")
 
 set_keymap("n", "<leader>mp", function()
 	print("Formatted ✨")
+	MiniTrailspace.trim()
 	vim.lsp.buf.format()
 end, "Making pretty command")
 
