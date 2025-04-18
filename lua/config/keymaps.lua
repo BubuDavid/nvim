@@ -51,12 +51,6 @@ set_keymap("n", "<leader>vd", function()
 	vim.diagnostic.open_float({ border = "rounded" })
 end, "Diagnostics")
 
-set_keymap("n", "<leader>mp", function()
-	print("Formatted ✨")
-	MiniTrailspace.trim()
-	vim.lsp.buf.format()
-end, "Making pretty command")
-
 set_keymap("n", "<leader>rn", function()
 	vim.lsp.buf.rename()
 end, "LSP Smart Rename")
