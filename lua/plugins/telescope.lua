@@ -88,7 +88,7 @@ return {
 			end
 		end, { desc = "Telescope Live Grep String over Python libraries" })
 
-		vim.keymap.set("n", "<leader>fr", function()
+		vim.keymap.set({"n", "v"}, "<leader>fr", function()
 			builtin.registers(ivy_theme)
 		end, { desc = "Telescope Registers" })
 
