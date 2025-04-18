@@ -37,8 +37,6 @@ set_keymap("v", "<leader>d", '"_d', "Delete something without copying it")
 set_keymap("n", "<leader>Y", '"+y$', "Copy things from nvim to computer")
 set_keymap({ "n", "v" }, "<leader>y", '"+y', "Copy things from nvim to computer")
 
-set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
-
 set_keymap("n", "cgn", "*Ncgn", "Changes the current word and with '.' changes the following match")
 set_keymap("n", "g.", [[:/\V\C<C-R>"<CR>cgn<C-A><Esc>]], "cgn but if you forget the cgn")
 
@@ -70,8 +68,9 @@ set_keymap("i", "<C-p>", "<C-\\><C-O>p", "Move right one word in insert mode")
 set_keymap("i", "<C-d>", "<C-\\><C-O>x", "Delete character after cursor")
 
 -- BUFFER NAVIGATION
-set_keymap("n", "<leader>1", ":b#<CR>", "Go to previous buffer")
-set_keymap("n", "<leader>2", ":bn<CR>", "Rotate buffers with bufnext")
+set_keymap("n", "<leader>bd", vim.cmd.bd, "Delete buffer")
+set_keymap("n", "<leader>bb", ":b#<CR>", "Go to previous buffer")
+set_keymap("n", "<leader>bn", ":bn<CR>", "Rotate buffers with bufnext")
 
 
 -- DEVELOPMENT
