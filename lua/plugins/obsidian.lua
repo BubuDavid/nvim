@@ -14,15 +14,15 @@ return {
 			workspaces = {
 				{
 					name = "work",
-					path = "~/nodes/work"
+					path = "~/notes/work"
 				},
 				{
 					name = "learning",
-					path = "~/nodes/learning"
+					path = "~/notes/learning"
 				},
 				{
 					name = "personal",
-					path = "~/nodes/personal"
+					path = "~/notes/personal"
 				},
 			},
 			completion = {
