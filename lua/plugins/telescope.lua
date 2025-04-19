@@ -88,7 +88,7 @@ return {
 			end
 		end, { desc = "Telescope Live Grep String over Python libraries" })
 
-		vim.keymap.set({"n", "v"}, "<leader>fr", function()
+		vim.keymap.set({ "n", "v" }, "<leader>fr", function()
 			builtin.registers(ivy_theme)
 		end, { desc = "Telescope Registers" })
 
@@ -99,6 +99,10 @@ return {
 		vim.keymap.set("n", "<leader>fj", function()
 			builtin.jumplist(ivy_theme)
 		end, { desc = "Telescope Jump List" })
+
+		vim.keymap.set("n", "<leader>vD", function()
+			builtin.diagnostics(nil)
+		end, { desc = "Telescope all buffers diagnostics" })
 
 		vim.keymap.set("n", "<leader>fc", function()
 			builtin.colorscheme(ivy_theme)

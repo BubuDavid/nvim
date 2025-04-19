@@ -57,6 +57,15 @@ end, "LSP Smart Rename")
 
 set_keymap("n", "<leader>lr", ":LspRestart<CR>", "Restart the lsp")
 
+set_keymap("n", "<leader><C-]>", function()
+	local function on_list(options)
+		vim.fn.setqflist({}, ' ', options)
+		vim.cmd.tabnew()
+		vim.cmd.cfirst()
+	end
+	vim.lsp.buf.definition({ on_list = on_list })
+end, { desc = "Jumping to definition in another tab", })
+
 -- VIM MOTIONS ON INSERT MODE
 set_keymap("i", "<C-h>", "<C-\\><C-O>h", "Move left one word in insert mode")
 set_keymap("i", "<C-l>", "<C-\\><C-O>l", "Move right one word in insert mode")
