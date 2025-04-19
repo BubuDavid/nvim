@@ -55,6 +55,8 @@ set_keymap("n", "<leader>rn", function()
 	vim.lsp.buf.rename()
 end, "LSP Smart Rename")
 
+set_keymap("n", "<leader>lr", ":LspRestart<CR>", "Restart the lsp")
+
 -- VIM MOTIONS ON INSERT MODE
 set_keymap("i", "<C-h>", "<C-\\><C-O>h", "Move left one word in insert mode")
 set_keymap("i", "<C-l>", "<C-\\><C-O>l", "Move right one word in insert mode")
