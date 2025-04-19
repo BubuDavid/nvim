@@ -4,12 +4,13 @@ return {
 	dependencies = {
 		"folke/tokyonight.nvim",
 		"Shatur/neovim-ayu",
+		"gruvbox-community/gruvbox",
 		{
 			"catppuccin/nvim",
 			name = "catppuccin",
 		},
 	},
 	config = function()
-		vim.cmd("colorscheme tokyonight-night")
+		vim.cmd("colorscheme gruvbox")
 	end
 }

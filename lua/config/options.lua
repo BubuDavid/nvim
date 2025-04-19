@@ -26,3 +26,7 @@ vim.opt.cursorline = true
 
 -- Set default colorscheme
 vim.cmd("colorscheme habamax")
+
+-- This is needed for obsidian.nvim
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nv"
