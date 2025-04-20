@@ -25,8 +25,12 @@ return {
 			},
 		},
 		sources = {
-			default = { "dadbod" },
+			per_filetype = { sql = { "dadbod", "lsp", "buffer" } },
 			providers = {
+				dadbod = {
+					name = "Dadbod",
+					module = "vim_dadbod_completion.blink"
+				},
 				path = {
 					opts = {
 						get_cwd = function(_)
@@ -47,10 +51,6 @@ return {
 						return true
 					end
 				},
-				dadbod = {
-					name = "Dadbod",
-					module = "vim_dadbod_completion.blink"
-				}
 			},
 		},
 		signature = {
