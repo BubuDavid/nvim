@@ -82,3 +82,8 @@ set_keymap("n", "<leader>bn", ":bn<CR>", "Rotate buffers with bufnext")
 set_keymap("n", "<leader><leader>x", ":source %<CR>", "Executes a lua file")
 set_keymap("n", "<leader>x", ":.lua<CR>", "Executes a lua line")
 set_keymap("v", "<leader>x", ":lua<CR>", "Executes a lua selection")
+
+-- TAB NAVIGATION
+set_keymap("n", "<leader>tn", vim.cmd.tabn, "Go to next tab")
+set_keymap("n", "<leader>tp", vim.cmd.tabp, "Go to next tab")
+set_keymap("n", "<leader>tp", vim.cmd.tabp, "Go to next tab")

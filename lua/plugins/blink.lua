@@ -1,7 +1,10 @@
 return {
 	"saghen/blink.cmp",
-	build = 'cargo build --release', -- for delimiters
-	dependencies = { "rafamadriz/friendly-snippets" },
+	build = 'cargo build --release',
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"kristijanhusak/vim-dadbod-completion"
+	},
 	version = "1.*",
 
 	opts = {
@@ -22,6 +25,7 @@ return {
 			},
 		},
 		sources = {
+			default = { "dadbod" },
 			providers = {
 				path = {
 					opts = {
@@ -43,6 +47,10 @@ return {
 						return true
 					end
 				},
+				dadbod = {
+					name = "Dadbod",
+					module = "vim_dadbod_completion.blink"
+				}
 			},
 		},
 		signature = {
