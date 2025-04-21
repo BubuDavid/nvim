@@ -87,3 +87,9 @@ set_keymap("v", "<leader>x", ":lua<CR>", "Executes a lua selection")
 set_keymap("n", "<leader>tn", vim.cmd.tabn, "Go to next tab")
 set_keymap("n", "<leader>tp", vim.cmd.tabp, "Go to next tab")
 set_keymap("n", "<leader>tp", vim.cmd.tabp, "Go to next tab")
+
+-- QUICKFIX NAVIGATION
+set_keymap("n", "<leader>co", vim.cmd.copen, "Open quickfix list")
+set_keymap("n", "<leader>cc", vim.cmd.cclose, "Close quickfix list")
+set_keymap("n", "<leader>cn", vim.cmd.cnext, "Go to next quickfix item")
+set_keymap("n", "<leader>cp", vim.cmd.cprev, "Go to previous quickfix item")
