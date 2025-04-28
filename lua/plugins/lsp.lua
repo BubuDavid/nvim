@@ -58,6 +58,8 @@ return {
 			lua_ls = {},
 			ts_ls = {},
 			tailwindcss = {},
+			rust_analyzer = {},
+			terraformls = {},
 		},
 	},
 	config = function(_, opts)
