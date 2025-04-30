@@ -122,7 +122,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.keymap.set({ "n" }, "<leader>mp", function()
 			local filetype = vim.bo.filetype -- Here detects the filetype of the current buffer
-			base_format(prettier_format, { filetype = filetype })
+			if filetype == "yaml.docker-compose" then
+				base_format()
+			else
+				base_format(prettier_format, { filetype = filetype })
+			end
 		end, { desc = "Simple usage of prettier", buffer = true })
 	end
 })

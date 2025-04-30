@@ -60,6 +60,7 @@ return {
 			tailwindcss = {},
 			rust_analyzer = {},
 			terraformls = {},
+			docker_compose_language_service = {},
 		},
 	},
 	config = function(_, opts)
@@ -74,6 +75,15 @@ return {
 					[vim.diagnostic.severity.INFO] = " ",
 				},
 			},
+		})
+
+		-- Create autocmd for docker-compose lsp
+		vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+			group = vim.api.nvim_create_augroup("DockerComposeLSP", { clear = true }),
+			pattern = { "docker-compose.{yml,yaml}" },
+			callback = function()
+				vim.bo.filetype = "yaml.docker-compose"
+			end
 		})
 
 		for server, config in pairs(opts.servers) do
