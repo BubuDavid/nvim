@@ -11,6 +11,12 @@ return {
 			win_options = {
 				signcolumn = "yes:1",
 			},
+			view_options = {
+				is_hidden_file = function(name, _)
+					local m = name:match("^%.") or name:match("^__pycache__$") or name:match("^%.pyc$")
+					return m ~= nil
+				end,
+			},
 			delete_to_trash = true,
 			keymaps = {
 				["<C-p>"] = { "actions.preview", opts = { split = "botright" } },
