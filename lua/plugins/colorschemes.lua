@@ -11,6 +11,7 @@ return {
 		},
 	},
 	config = function()
-		vim.cmd("colorscheme gruvbox")
+		-- vim.cmd("colorscheme gruvbox")
+		vim.cmd("colorscheme ayu-dark")
 	end
 }

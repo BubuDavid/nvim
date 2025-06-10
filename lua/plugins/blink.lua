@@ -43,9 +43,9 @@ return {
 						local prompt_type = vim.fn.getcmdtype()
 						if prompt_type == ":" then
 							local prompt = vim.fn.getcmdline()
-							if prompt:match("^[%%0-9,'<>%-]*!") or #prompt <= 2 then
-								return false
-							end
+							-- if prompt:match("^[%%0-9,'<>%-]*!") or #prompt <= 2 then
+							-- 	return false
+							-- end
 						else
 						end
 						return true
