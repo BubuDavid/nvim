@@ -16,6 +16,13 @@ return {
 	opts = {
 		servers = {
 			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							diagnosticMode = "workspace"
+						}
+					}
+				},
 				handlers = {
 					["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
 						local filtered_diagnostics = {}
