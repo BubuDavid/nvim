@@ -11,6 +11,7 @@ return {
 	},
 	config = function()
 		require("obsidian").setup({
+			legacy_commands = false,
 			workspaces = {
 				{
 					name = "work",
@@ -51,21 +52,21 @@ return {
 			end,
 		})
 
-		vim.keymap.set({ "n" }, "<leader>os", ":ObsidianSearch<CR>",
+		vim.keymap.set({ "n" }, "<leader>os", ":Obsidian search<CR>",
 			{ desc = "Search by Grep the notes" })
-		vim.keymap.set({ "n" }, "<leader>on", ":ObsidianNew<CR>",
+		vim.keymap.set({ "n" }, "<leader>on", ":Obsidian new<CR>",
 			{ desc = "Create a note" })
-		vim.keymap.set({ "n" }, "<leader>ow", ":ObsidianWorkspace<CR>",
+		vim.keymap.set({ "n" }, "<leader>ow", ":Obsidian workspace<CR>",
 			{ desc = "Change from workspace" })
-		vim.keymap.set({ "n" }, "<leader>of", ":ObsidianQuickSwitch<CR>",
+		vim.keymap.set({ "n" }, "<leader>of", ":Obsidian quick_switch<CR>",
 			{ desc = "Search note by name" })
-		vim.keymap.set({ "n" }, "<leader>ob", ":ObsidianQuickSwitch<CR>",
+		vim.keymap.set({ "n" }, "<leader>ob", ":Obsidian quick_switch<CR>",
 			{ desc = "Get picker list of references to the current buffer" })
-		vim.keymap.set({ "n" }, "<leader>ot", ":ObsidianTags<CR>",
+		vim.keymap.set({ "n" }, "<leader>ot", ":Obsidian tags<CR>",
 			{ desc = "Search Tags" })
-		vim.keymap.set({ "n" }, "<leader>or", ":ObsidianRename<CR>",
+		vim.keymap.set({ "n" }, "<leader>or", ":Obsidian rename<CR>",
 			{ desc = "Rename current note" })
-		vim.keymap.set({ "n" }, "<leader>oc", ":ObsidianTOC<CR>",
-			{ desc = "Open Table of Contents" })
+		-- vim.keymap.set({ "n" }, "<leader>oc", ":Obsidian TOC<CR>",
+		-- 	{ desc = "Open Table of Contents" })
 	end
 }
