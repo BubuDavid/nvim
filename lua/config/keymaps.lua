@@ -56,6 +56,7 @@ set_keymap("n", "<leader>rn", function()
 end, "LSP Smart Rename")
 
 set_keymap("n", "<leader>lr", ":LspRestart<CR>", "Restart the lsp")
+set_keymap("n", "<leader>lu", ":Lazy update<CR>", "Update Lazy")
 
 set_keymap("n", "<leader><C-]>", function()
 	local function on_list(options)
