@@ -71,8 +71,6 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local lspconfig = require("lspconfig")
-
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -95,7 +93,8 @@ return {
 
 		for server, config in pairs(opts.servers) do
 			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-			lspconfig[server].setup(config)
+			vim.lsp.config(server, config)
+			vim.lsp.enable(server)
 		end
 	end,
 }
