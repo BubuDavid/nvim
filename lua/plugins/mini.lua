@@ -26,6 +26,29 @@ return {
 
 		-- AutoPairs
 		require('mini.pairs').setup({})
+		-- Make quotes only pair when there's whitespace or specific characters before
+		local double_quote_opts = {
+			action = 'closeopen',
+			pair = '""',
+			neigh_pattern = '[^%a\\][^%a\\]', -- Don't pair in the middle of words
+			register = { cr = false },
+		}
+		MiniPairs.map('i', '"', double_quote_opts)
+
+		local quote_opts = {
+			action = 'closeopen',
+			pair = "''",
+			neigh_pattern = '[^%a\\][^%a\\]',
+			register = { cr = false },
+		}
+		MiniPairs.map('i', "'", quote_opts)
+		local special_quotes = {
+			action = 'closeopen',
+			pair = '``',
+			neigh_pattern = '[^%a\\][^%a\\]',
+			register = { cr = false },
+		}
+		MiniPairs.map('i', '`', special_quotes)
 
 		local lt_opts = {
 			action = 'open',
@@ -37,6 +60,34 @@ return {
 
 		local gt_opts = { action = 'close', pair = '<>', register = { cr = false } }
 		MiniPairs.map('i', '>', gt_opts)
+
+		-- Python-specific double quote handling for docstrings
+		vim.api.nvim_create_autocmd('FileType', {
+			pattern = 'python',
+			callback = function()
+				local function smart_double_quote()
+					local line = vim.api.nvim_get_current_line()
+					local col = vim.fn.col('.') - 1
+
+					-- Check if there are already two consecutive quotes before cursor
+					local before = line:sub(math.max(1, col - 1), col)
+					if before == '""' then
+						-- Just insert a single quote (for docstrings)
+						return '"'
+					end
+
+					-- Check if next char is a quote (closing)
+					local next_char = line:sub(col + 1, col + 1)
+					if next_char == '"' then
+						return '<Right>'
+					end
+
+					-- Otherwise insert pair (open and close, then move left)
+					return '""<Left>'
+				end
+				vim.keymap.set('i', '"', smart_double_quote, { expr = true, buffer = true })
+			end,
+		})
 
 		-- Starter Screen
 		require("mini.starter").setup()
