@@ -33,3 +33,7 @@ vim.o.guicursor = "n-v:block,i-ci-ve:block-blinkwait0-blinkon400-blinkoff250"
 -- This is needed for obsidian.nvim
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = ""
+
+-- Random stuff
+vim.opt.scrolloff = 4
+vim.opt.sidescrolloff = 8
