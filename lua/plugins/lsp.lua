@@ -27,21 +27,17 @@ return {
 					["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
 						local filtered_diagnostics = {}
 						for _, diagnostic in ipairs(result.diagnostics) do
-							-- Keep the diagnostic unless it's an unused variable with __ prefix
 							local keep = true
 
-							-- Check if it's an "unnecessary" diagnostic (tag==1) for an unused variable
 							if
 									diagnostic.tags
 									and diagnostic.tags[1] == 1
 									and diagnostic.message:match("is not accessed")
 							then
-								-- Extract the variable name from the message
 								local var_name = diagnostic.message:match(
 									'"([^"]+)" is not accessed'
 								)
 
-								-- Skip if the variable starts with _ (_variable)
 								if var_name and var_name:match("^_") then
 									keep = false
 								end
@@ -60,6 +56,8 @@ return {
 							config
 						)
 					end,
+					-- Disable progress notifications for pyright specifically
+					["$/progress"] = function() end,
 				},
 			},
 			lua_ls = {},
@@ -71,18 +69,20 @@ return {
 		},
 	},
 	config = function(_, opts)
+		-- Disable progress notifications globally for ALL LSP servers
+		vim.lsp.handlers["$/progress"] = function() end
+		
 		vim.diagnostic.config({
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = " ",
-					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
 					[vim.diagnostic.severity.HINT] = "󰠠 ",
-					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
 				},
 			},
 		})
 
-		-- Create autocmd for docker-compose lsp
 		vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 			group = vim.api.nvim_create_augroup("DockerComposeLSP", { clear = true }),
 			pattern = { "docker-compose.{yml,yaml}" },

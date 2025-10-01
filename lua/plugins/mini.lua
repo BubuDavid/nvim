@@ -11,7 +11,7 @@ return {
 		})
 
 		-- Notification system (TODO: Actually Create functionality with this)
-		-- require("mini.notify").setup()
+		require("mini.notify").setup()
 
 		-- TODO: Improve the signs because these are horrible
 		-- Diff with git IG
