@@ -1,7 +1,7 @@
 local function base_format(format_fn, opts)
 	MiniTrailspace.trim()
 	if format_fn == nil then
-		print("Formatted using vim.lsp.buf.format() ✨")
+		-- print("Formatted using vim.lsp.buf.format() ✨")
 		vim.lsp.buf.format()
 	else
 		format_fn(opts)
@@ -49,7 +49,7 @@ local function python_format()
 	-- Replace buffer content with formatted content
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted_lines)
 
-	print("Formatted with ruff ✨")
+	-- print("Formatted with ruff ✨")
 end
 
 -- This is for the servers that do not support formatting by default
@@ -102,7 +102,7 @@ local function prettier_format(opts)
 	-- Replace buffer content with formatted content
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted_lines)
 
-	print("Formatted with prettier ✨")
+	-- print("Formatted with prettier ✨")
 end
 
 vim.api.nvim_create_autocmd("FileType", {
