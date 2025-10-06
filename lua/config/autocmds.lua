@@ -6,3 +6,12 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Set a color column when in Python to have 79 lines PEP-8
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    vim.opt.colorcolumn = "80"
+  end,
+  group = vim.api.nvim_create_augroup("ColorColumnPythonPEP", { clear = true }),
+  pattern = { "python" },
+})
