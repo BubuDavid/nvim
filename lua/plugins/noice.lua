@@ -6,5 +6,8 @@ return {
         enabled = false,
       },
     },
+    hover = {
+      silent = true,
+    },
   },
 }

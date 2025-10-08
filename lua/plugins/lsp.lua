@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      ruff = false,
       pyright = {
         settings = {
           python = {
