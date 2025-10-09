@@ -17,6 +17,14 @@ map({ "n", "v" }, "{", "{zz", { desc = "Go to previuos empty line with centered 
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up the selected text" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Down the selected text" })
 
+-- Unmap Alt+j and Alt+k for moving lines
+vim.keymap.del("n", "<A-j>")
+vim.keymap.del("n", "<A-k>")
+vim.keymap.del("i", "<A-j>")
+vim.keymap.del("i", "<A-k>")
+vim.keymap.del("v", "<A-j>")
+vim.keymap.del("v", "<A-k>")
+
 map("x", "<leader>p", '"_dP', { desc = "Delete something without copying it" })
 map("n", "<leader>d", '"_d', { desc = "Delete something without copying it" })
 map("v", "<leader>d", '"_d', { desc = "Delete something without copying it" })
