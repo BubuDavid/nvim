@@ -5,6 +5,7 @@ return {
     formatters_by_ft = {
       json = { "prettier" },
       python = { "ruff_organize_imports", "ruff_format" },
+      toml = { "pyproject-fmt" },
     },
     formatters = {
       ruff_organize_imports = {
