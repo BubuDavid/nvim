@@ -4,3 +4,4 @@
 
 vim.opt.clipboard = ""
 vim.o.wrap = true
+vim.o.scrolloff = 2
