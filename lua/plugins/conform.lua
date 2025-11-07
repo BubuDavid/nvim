@@ -6,6 +6,7 @@ return {
       json = { "prettier" },
       python = { "ruff_organize_imports", "ruff_format" },
       toml = { "pyproject-fmt" },
+      yaml = { "prettier" },
       html = { "prettier" },
     },
     formatters = {
