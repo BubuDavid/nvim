@@ -5,3 +5,5 @@
 vim.opt.clipboard = ""
 vim.o.wrap = true
 vim.o.scrolloff = 2
+vim.opt.conceallevel = 0
+vim.opt.spell = false

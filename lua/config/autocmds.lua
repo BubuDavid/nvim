@@ -5,7 +5,8 @@
 -- with `vim.api.nvim_create_autocmd`
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+-- Kill LazyVim's default autocmd that re-enables spell (and wrap) on markdown/gitcommit/text
+pcall(vim.api.nvim_del_augroup_by_name, "lazyvim_wrap_spell")
 
 -- Set a color column when in Python to have 79 lines PEP-8
 vim.api.nvim_create_autocmd("FileType", {
